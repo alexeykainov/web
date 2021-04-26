@@ -11,18 +11,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@tlq219+9tq6d*9o=9-t4bq*i6ng3)nxdqx(ic+iiyxcih*vix'
+SECRET_KEY = '@x76s3h%=@mtl6l9c=#adtj8)5zq8ft*yx+7+bk(2bkn_7l11c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,15 +40,15 @@ INSTALLED_APPS = [
     'qa',
 ]
 
-MIDDLEWARE_CLASSES = (                                                          
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',                           
-) 
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 ROOT_URLCONF = 'ask.urls'
 
@@ -79,7 +77,11 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'stepic_db',
+        #'USER': 'box',
+        #'PASSWORD': '123',
+        #'HOST': '127.0.0.1',
+        #'PORT': '5432',
     }
 }
 
